@@ -48,7 +48,7 @@ Apify.main(async () => {
 
     // Sleeps act for 10s
     // NOTE: We use sleep to avoid instant usage
-    sleep(10);
+    sleep.sleep(10);
 
     console.log('Act finished!');
 });
