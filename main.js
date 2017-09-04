@@ -6,36 +6,40 @@ const sleep = require('sleep');
 const _ = require('underscore');
 
 // Input data attributes types
-const DATA_TYPES = `{
+const INPUT_TYPES = `{
         to: String,
         subject: String,
         text: String,
         isMock: Maybe Boolean,
         cc: Maybe String,
         bcc: Maybe String,
+        actId: Maybe String,
+        _id: Maybe String,
     }`;
 // Allowed mail attributes
 const MAIL_ATTRIBUTES = ['to', 'subject', 'text', 'cc', 'bcc'];
 
 Apify.main(async () => {
     // Gets input of your act
-    const input = await Apify.getValue('INPUT');
-    if (!input.data) {
-        throw new Error('Input data is missing!');
+    let input = await Apify.getValue('INPUT');
+    if (!input) {
+        throw new Error('Input is missing!');
     }
-    // NOTE: Data from crawler finish webhook was JSON string
-    const data = (typeof input.data === 'string') ? JSON.parse(input.data) : input.data;
+    // Data from crawler finish webhook was in input.data JSON string
+    if (input.data) {
+        input = Object.assign(input, JSON.parse(input.data));
+        delete input.data;
+    }
     // Checks input
-    if (!typeCheck(DATA_TYPES, data)) {
-        console.log(`Invalid input data:\n${JSON.stringify(data)}\nData types:\n${DATA_TYPES}\nAct failed!`);
+    if (!typeCheck(INPUT_TYPES, input)) {
+        console.log(`Invalid input:\n${JSON.stringify(input)}\nData types:\n${INPUT_TYPES}\nAct failed!`);
         throw new Error('Invalid input data');
     }
-
     // Sends mail
-    const mail = _.pick(data, MAIL_ATTRIBUTES);
+    const mail = _.pick(input, MAIL_ATTRIBUTES);
     mail.from = 'Apifier Mailer <postmaster@apify-mailer.com>';
 
-    if (data.isMock) {
+    if (input.isMock) {
         console.log(`Mail:\n${JSON.stringify(mail)}`)
     } else {
         const sender = mailgun({
@@ -45,7 +49,6 @@ Apify.main(async () => {
         const senderBody = await sender.messages().send(mail);
         console.log(`Email with id ${senderBody.id} was send to ${mail.to}.`);
     }
-
     // Sleeps act for 10s
     // NOTE: We use sleep to avoid instant usage
     sleep.sleep(10);

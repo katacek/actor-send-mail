@@ -5,22 +5,21 @@ Apify act to send mail.
 ## Input
 ```javascript
 {
-    data: {
-        // Email address of the recipient(s) (e.g. "Apifier <info@apifier.com>")
-        // Required
-        to: String,
-        // Email CC same format as to
-        // Required
-        cc: String
-         // Email BCC same format as to
-        bcc: String
-        // Email subject
-        // Required
-        subject: String,
-        // Text body of Email
-        // Required
-        text: String,
-    }
+    // Email address of the recipient(s) (e.g. "Apifier <info@apifier.com>")
+    // Required
+    to: String,
+    // Email CC same format as to
+    // Required
+    cc: String
+    // Email BCC same format as to
+    bcc: String
+    // Email subject
+    // Required
+    subject: String,
+    // Text body of Email
+    // Required
+    text: String,
+
 }
 ```
 
@@ -29,17 +28,14 @@ Apify act to send mail.
 ### From other Apify act
 
 ```javascript
-Apify.client.acts.runAct({
-    actId: 'apify/send-mail',
+Apify.call('apify/send-mail', {
     contentType: 'application/json',
     body: JSON.stringify({
-        data: {
-            to: 'test@apifier.com',
-            subject: 'Test from act',
-            text: "Email text"
-        }
+        to: 'test@apifier.com',
+        subject: 'Test from act',
+        text: "Email text"
     })
-});
+})
 ```
 
 ### From Apify Crawler finish webhook
