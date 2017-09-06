@@ -36,8 +36,8 @@ Apify.call({
             to: 'test@apifier.com',
             subject: 'Test from act',
             text: "Email text"
-        }
-    })
+        })
+    }
 });
 ```
 
