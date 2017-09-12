@@ -4,6 +4,7 @@ const request = require('request-promise');
 const typeCheck = require('type-check').typeCheck;
 const sleep = require('sleep');
 const _ = require('underscore');
+const util = require('util');
 
 // Input data attributes types
 const INPUT_TYPES = `{
@@ -15,7 +16,7 @@ const INPUT_TYPES = `{
         bcc: Maybe String,
         actId: Maybe String,
         _id: Maybe String,
-        attachments: Maybe [Object],
+        attachments: Maybe [{filename: String, data: String}],
     }`;
 // Allowed mail attributes
 const MAIL_ATTRIBUTES = ['to', 'subject', 'text', 'cc', 'bcc'];
@@ -49,11 +50,9 @@ Apify.main(async () => {
     if (input.attachments) {
         mail.attachment = [];
         for (let attachment of input.attachments) {
-            const record = await Apify.client.keyValueStores.getRecord(Object.assign(attachment), { rawBody: true });
-            console.log(record);
             const attch = new sender.Attachment({
-                data: record,
-                filename: attachment.key,
+                data: Buffer.from(attachment.data, 'base64'),
+                filename: attachment.filename
             });
             mail.attachment.push(attch);
         }
