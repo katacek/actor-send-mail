@@ -4,6 +4,7 @@ const request = require('request-promise');
 const typeCheck = require('type-check').typeCheck;
 const sleep = require('sleep');
 const _ = require('underscore');
+const util = require('util');
 
 // Input data attributes types
 const INPUT_TYPES = `{
@@ -15,6 +16,7 @@ const INPUT_TYPES = `{
         bcc: Maybe String,
         actId: Maybe String,
         _id: Maybe String,
+        attachments: Maybe [{filename: String, data: String}],
     }`;
 // Allowed mail attributes
 const MAIL_ATTRIBUTES = ['to', 'subject', 'text', 'cc', 'bcc'];
@@ -35,17 +37,31 @@ Apify.main(async () => {
         console.log(`Invalid input:\n${JSON.stringify(input)}\nData types:\n${INPUT_TYPES}\nAct failed!`);
         throw new Error('Invalid input data');
     }
+
     // Sends mail
     const mail = _.pick(input, MAIL_ATTRIBUTES);
     mail.from = 'Apifier Mailer <postmaster@apify-mailer.com>';
+    const sender = mailgun({
+        apiKey: process.env.MAILGUN_API_KEY,
+        domain: process.env.MAILGUN_DOMAIN
+    });
 
+    // Gets all attachments
+    if (input.attachments) {
+        mail.attachment = [];
+        for (let attachment of input.attachments) {
+            const attch = new sender.Attachment({
+                data: Buffer.from(attachment.data, 'base64'),
+                filename: attachment.filename
+            });
+            mail.attachment.push(attch);
+        }
+    }
+
+    console.log(mail);
     if (input.isMock) {
         console.log(`Mail:\n${JSON.stringify(mail)}`)
     } else {
-        const sender = mailgun({
-            apiKey: process.env.MAILGUN_API_KEY,
-            domain: process.env.MAILGUN_DOMAIN
-        });
         const senderBody = await sender.messages().send(mail);
         console.log(`Email with id ${senderBody.id} was send to ${mail.to}.`);
     }
