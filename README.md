@@ -48,7 +48,7 @@ Apify act to send mail.
 
 ```javascript
 Apify.call('apify/send-mail', {
-    to: 'test@apifier.com',
+    to: 'test@apify.com',
     subject: 'Test from act',
     text: "Email text",
     attachments: [{
@@ -71,7 +71,7 @@ You can find your API token on your Apifier account page.
 
 ```json
 {
-    "to": "test@apifier.com",
+    "to": "test@apify.com",
     "subject": "Test from crawler",
     "text": "Text"
 }
