@@ -47,21 +47,15 @@ Apify act to send mail.
 ### From other Apify act
 
 ```javascript
-Apify.call({
-    actId: 'apify/send-mail',
-    input: {
-        contentType: 'application/json',
-        body: JSON.stringify({
-            to: 'test@apifier.com',
-            subject: 'Test from act',
-            text: "Email text",
-            attachments: [{
-                filename: 'test.txt',
-                data: 'dGVzdCBzZmFzZGFzZGFzZGFzZA'
-           }]
-        })
-    }
-});
+Apify.call('apify/send-mail', {
+        to: 'test@apifier.com',
+        subject: 'Test from act',
+        text: "Email text",
+        attachments: [{
+            filename: 'test.txt',
+            data: 'dGVzdCBzZmFzZGFzZGFzZGFzZA'
+       }]
+    });
 ```
 
 ### From Apify Crawler finish webhook
