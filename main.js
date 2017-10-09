@@ -1,10 +1,7 @@
 const Apify = require('apify');
 const mailgun = require('mailgun-js');
-const request = require('request-promise');
 const typeCheck = require('type-check').typeCheck;
-const sleep = require('sleep');
 const _ = require('underscore');
-const util = require('util');
 
 // Input data attributes types
 const INPUT_TYPES = `{
@@ -40,7 +37,7 @@ Apify.main(async () => {
 
     // Sends mail
     const mail = _.pick(input, MAIL_ATTRIBUTES);
-    mail.from = 'Apifier Mailer <postmaster@apify-mailer.com>';
+    mail.from = 'Apify Mailer <postmaster@apify-mailer.com>';
     const sender = mailgun({
         apiKey: process.env.MAILGUN_API_KEY,
         domain: process.env.MAILGUN_DOMAIN
@@ -67,5 +64,5 @@ Apify.main(async () => {
     }
     // Sleeps act for 10s
     // NOTE: We use sleep to avoid instant usage
-    sleep.sleep(10);
+    await new Promise((resolve, reject) => setTimeout(resolve, 10 * 1000));
 });
