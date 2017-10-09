@@ -7,7 +7,7 @@ Apify act to send mail.
 **Example:**
 ```javascript
 {
-    // Email address of the recipient(s) (e.g. "Apifier <info@apifier.com>")
+    // Email address of the recipient(s) (e.g. "Apify <info@apify.com>")
     // Required
     to: String,
     // Email CC same format as to
@@ -27,7 +27,7 @@ Apify act to send mail.
 ```
 
 **Attributes:**
-- `to` - Email address of the recipient(s) (e.g. "Apifier <info@apifier.com>")
+- `to` - Email address of the recipient(s) (e.g. "Apify <info@apify.com>")
 - `cc` - Email CC same format as to
 - `bcc` - Email BCC same format as to
 - `subject` - Email subject
@@ -48,14 +48,14 @@ Apify act to send mail.
 
 ```javascript
 Apify.call('apify/send-mail', {
-        to: 'test@apifier.com',
-        subject: 'Test from act',
-        text: "Email text",
-        attachments: [{
-            filename: 'test.txt',
-            data: 'dGVzdCBzZmFzZGFzZGFzZGFzZA'
-       }]
-    });
+    to: 'test@apifier.com',
+    subject: 'Test from act',
+    text: "Email text",
+    attachments: [{
+        filename: 'test.txt',
+        data: 'dGVzdCBzZmFzZGFzZGFzZGFzZA'
+    }]
+});
 ```
 
 ### From Apify Crawler finish webhook
@@ -64,7 +64,7 @@ For a specific crawler set the following parameters:
 
 #### Finish webhook URL (finishWebhookUrl)
 
-https://api.apifier.com/v2/acts/apify~send-mail/runs?token=APIFIER_API_TOKEN
+https://api.apify.com/v2/acts/apify~send-mail/runs?token=APIFIER_API_TOKEN
 You can find your API token on your Apifier account page.
 
 #### Finish webhook data (finishWebhookData)
