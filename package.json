@@ -1,0 +1,25 @@
+{
+  "name": "act-send-mail",
+  "version": "1.0.0",
+  "description": "Act sends mail.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Apifier/act-send-mail.git"
+  },
+  "author": "Jakub Drobnik <jakub.drobnik@apify.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Apifier/act-send-mail/issues"
+  },
+  "homepage": "https://github.com/Apifier/act-send-mail#readme",
+  "dependencies": {
+    "apify": "^0.4.29",
+    "mailgun-js": "^0.13.1",
+    "type-check": "^0.3.2",
+    "underscore": "^1.8.3"
+  }
+}
