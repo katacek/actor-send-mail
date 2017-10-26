@@ -64,8 +64,8 @@ For a specific crawler set the following parameters:
 
 #### Finish webhook URL (finishWebhookUrl)
 
-https://api.apify.com/v2/acts/apify~send-mail/runs?token=APIFIER_API_TOKEN
-You can find your API token on your Apifier account page.
+https://api.apify.com/v2/acts/apify~send-mail/runs?token=APIFY_API_TOKEN
+You can find your API token on your Apify account page.
 
 #### Finish webhook data (finishWebhookData)
 
