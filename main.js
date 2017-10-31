@@ -7,7 +7,8 @@ const _ = require('underscore');
 const INPUT_TYPES = `{
         to: String,
         subject: String,
-        text: String,
+        text: Maybe String,
+        html: Maybe String,
         isMock: Maybe Boolean,
         cc: Maybe String,
         bcc: Maybe String,
@@ -16,7 +17,7 @@ const INPUT_TYPES = `{
         attachments: Maybe [{filename: String, data: String}],
     }`;
 // Allowed mail attributes
-const MAIL_ATTRIBUTES = ['to', 'subject', 'text', 'cc', 'bcc'];
+const MAIL_ATTRIBUTES = ['to', 'subject', 'text', 'html', 'cc', 'bcc'];
 
 Apify.main(async () => {
     // Gets input of your act
@@ -30,6 +31,7 @@ Apify.main(async () => {
         delete input.data;
     }
     // Checks input
+    if (!(input.text || input.html)) throw new Error('Invalid input data, text or html missing.');
     if (!typeCheck(INPUT_TYPES, input)) {
         console.log(`Invalid input:\n${JSON.stringify(input)}\nData types:\n${INPUT_TYPES}\nAct failed!`);
         throw new Error('Invalid input data');

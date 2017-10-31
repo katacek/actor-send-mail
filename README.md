@@ -32,6 +32,7 @@ Apify act to send mail.
 - `bcc` - Email BCC same format as to
 - `subject` - Email subject
 - `text` - Text body of Email
+- `html` - HTML body of Email
 - `attachments` - array of attachments in base64 string, example:
 ```javascript
 [{
@@ -73,6 +74,7 @@ You can find your API token on your Apify account page.
 {
     "to": "test@apify.com",
     "subject": "Test from crawler",
-    "text": "Text"
+    "text": "Text",
+    "html": "<p>Text</p>"
 }
 ```
