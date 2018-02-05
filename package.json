@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Apifier/act-send-mail.git"
+    "url": "git+https://github.com/apifytech/act-send-mail.git"
   },
   "author": "Jakub Drobnik <jakub.drobnik@apify.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Apifier/act-send-mail/issues"
+    "url": "https://github.com/apifytech/act-send-mail/issues"
   },
-  "homepage": "https://github.com/Apifier/act-send-mail#readme",
+  "homepage": "https://github.com/apifytech/act-send-mail#readme",
   "dependencies": {
     "apify": "^0.4.29",
     "mailgun-js": "^0.13.1",
