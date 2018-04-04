@@ -48,7 +48,7 @@ Apify act to send mail.
 ### From other Apify act
 
 ```javascript
-Apify.call('apify/send-mail', {
+await Apify.call('apify/send-mail', {
     to: 'test@apify.com',
     subject: 'Test from act',
     text: "Email text",
