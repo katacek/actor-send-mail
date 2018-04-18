@@ -33,7 +33,7 @@ Apify.main(async () => {
     // Checks input
     if (!(input.text || input.html)) throw new Error('Invalid input data, text or html missing.');
     if (!typeCheck(INPUT_TYPES, input)) {
-        console.log(`Invalid input:\n${JSON.stringify(input)}\nData types:\n${INPUT_TYPES}\nAct failed!`);
+        console.log(`Invalid input:\n${JSON.stringify(input,null,2)}\n\nData types:\n${INPUT_TYPES}\n\nAct failed!`);
         throw new Error('Invalid input data');
     }
 
