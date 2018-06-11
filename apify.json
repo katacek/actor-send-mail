@@ -1,0 +1,11 @@
+{
+	"name": "send-mail",
+	"actId": "apify/send-mail",
+	"version": {
+		"versionNumber": "0.1",
+		"buildTag": "latest",
+		"envVars": [],
+		"sourceType": "TARBALL",
+		"tarballUrl": null
+	}
+}

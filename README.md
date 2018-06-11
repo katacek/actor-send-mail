@@ -33,6 +33,7 @@ Apify act to send mail.
 - `subject` - Email subject
 - `text` - Text body of Email
 - `html` - HTML body of Email
+- `replyTo` - Email address which will be set when recipient will try to reply to mail. (Uses header `Reply-To` see [doc](https://tools.ietf.org/html/rfc5322#section-3.6.2))
 - `attachments` - array of attachments in base64 string, example:
 ```javascript
 [{
