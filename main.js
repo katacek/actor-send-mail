@@ -15,6 +15,7 @@ const INPUT_TYPES = `{
         actId: Maybe String,
         _id: Maybe String,
         attachments: Maybe [{filename: String, data: String}],
+        replyTo: Maybe String
     }`;
 // Allowed mail attributes
 const MAIL_ATTRIBUTES = ['to', 'subject', 'text', 'html', 'cc', 'bcc'];
@@ -40,6 +41,7 @@ Apify.main(async () => {
     // Sends mail
     const mail = _.pick(input, MAIL_ATTRIBUTES);
     mail.from = 'Apify Mailer <postmaster@apify-mailer.com>';
+    if (input.replyTo) mail['h:Reply-To'] = input.replyTo;
     const sender = mailgun({
         apiKey: process.env.MAILGUN_API_KEY,
         domain: process.env.MAILGUN_DOMAIN
