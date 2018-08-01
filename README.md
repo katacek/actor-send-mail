@@ -1,6 +1,6 @@
 # act-send-mail
 
-Apify act to send mail.
+Apify actor to send mail.
 
 ## Input
 
@@ -46,12 +46,12 @@ Apify act to send mail.
 
 ## Usage
 
-### From other Apify act
+### From other Apify actor
 
 ```javascript
 await Apify.call('apify/send-mail', {
     to: 'test@apify.com',
-    subject: 'Test from act',
+    subject: 'Test from actor',
     text: "Email text",
     attachments: [{
         filename: 'test.txt',
