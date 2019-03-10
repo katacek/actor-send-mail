@@ -22,7 +22,7 @@ const MAIL_ATTRIBUTES = ['to', 'subject', 'text', 'html', 'cc', 'bcc'];
 
 Apify.main(async () => {
     // Gets input of your act
-    let input = await Apify.getValue('INPUT');
+    let input = await Apify.getInput();
     if (!input) {
         throw new Error('Input is missing!');
     }
