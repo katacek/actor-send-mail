@@ -1,6 +1,6 @@
-# act-send-mail
+# Apify Send Mail
 
-Apify act to send mail.
+Apify actor to send mail.
 
 ## Input
 
@@ -27,7 +27,7 @@ Apify act to send mail.
 ```
 
 **Attributes:**
-- `to` - Email address of the recipient(s) (e.g. "Apify <info@apify.com>")
+- `to` - Email address of the recipient(s), you can comma-separate multiple addresses (e.g. "Apify <info@apify.com>" or "info@apify.com, hello@apify.com")
 - `cc` - Email CC same format as to
 - `bcc` - Email BCC same format as to
 - `subject` - Email subject
@@ -46,7 +46,7 @@ Apify act to send mail.
 
 ## Usage
 
-### From other Apify act
+### From other Apify actor
 
 ```javascript
 await Apify.call('apify/send-mail', {
@@ -60,7 +60,7 @@ await Apify.call('apify/send-mail', {
 });
 ```
 
-### From Apify Crawler finish webhook
+### From Apify Crawler finish webhook [Deprecated]
 
 For a specific crawler set the following parameters:
 
