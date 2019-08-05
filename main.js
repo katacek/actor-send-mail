@@ -22,7 +22,7 @@ const MAIL_ATTRIBUTES = ['to', 'subject', 'text', 'html', 'cc', 'bcc'];
 
 Apify.main(async () => {
     // Gets input of your act
-    let input = await Apify.getValue('INPUT');
+    let input = await Apify.getInput();
     if (!input) {
         throw new Error('Input is missing!');
     }
@@ -64,7 +64,7 @@ Apify.main(async () => {
         console.log(`Mail:\n${JSON.stringify(mail)}`)
     } else {
         const senderBody = await sender.messages().send(mail);
-        console.log(`Email with id ${senderBody.id} was send to ${mail.to}.`);
+        console.log(`Email with id ${senderBody.id} was sent to ${mail.to}.`);
     }
     // Sleeps act for 10s
     // NOTE: We use sleep to avoid instant usage

@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "run-local": "APIFY_DEV_KEY_VALUE_STORE_DIR=./kvs-local/ node main.js"
+    "start": "node main.js"
   },
   "repository": {
     "type": "git",
@@ -18,8 +18,8 @@
   },
   "homepage": "https://github.com/apifytech/act-send-mail#readme",
   "dependencies": {
-    "apify": "^0.5.36",
-    "mailgun-js": "^0.18.0",
+    "apify": "^0.12.4",
+    "mailgun-js": "^0.22.0",
     "type-check": "^0.3.2",
     "underscore": "^1.9.1"
   }
