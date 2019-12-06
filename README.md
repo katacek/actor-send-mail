@@ -66,8 +66,8 @@ Calling this actor via a [webhook](https://docs.apify.com/webhooks) is very hand
 
 1. Open **Webhooks** tab of the actor/task that you want to monitor.
 2. Set **Event types** to `Run failed` and `Run timed out`.
-3. URL is the RUN endpoint of this actor, just fill your API token - https://api.apify.com/v2/acts/apify~send-mail/runs?token=APIFY_API_TOKEN
-4. Payload template represents the body that is sent to this actor. An example below:
+3. **URL** is the RUN API endpoint of this actor, just fill your API token - https://api.apify.com/v2/acts/apify~send-mail/runs?token=APIFY_API_TOKEN
+4. **Payload template** represents the body that is sent to this actor. An example below:
 
 ```
 {
