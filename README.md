@@ -73,8 +73,9 @@ Calling this actor via a [webhook](https://docs.apify.com/webhooks) is very hand
 {
     "to": "test@apify.com",
     "subject": "Task Scrape-website run failed",
-    "text": "Run link - https://my.apify.com/tasks/{{resource.actorTaskId}}#/runs/{{resource.id}}"
+    "text": "Run link - https://my.apify.com/tasks/{{eventData.actorTaskId}}#/runs/{{eventData.actorRunId}}"
 }
 ```
 
-Don't forget to switch the run link to tasks/actors depending on where you sned the webhook from.
+This example expects that the webhook is sent from a task run. If you want to send it from an actor run, just update the "text" to
+```"text": "Run link - https://my.apify.com/actors/{{eventData.actorId}}#/runs/{{eventData.actorRunId}}"```
