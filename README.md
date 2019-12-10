@@ -60,22 +60,22 @@ await Apify.call('apify/send-mail', {
 });
 ```
 
-### From Apify Crawler finish webhook [Deprecated]
+### From Apify actor/task webhook
 
-For a specific crawler set the following parameters:
+Calling this actor via a [webhook](https://docs.apify.com/webhooks) is very handy because you can ensure it is sent only after specific event happens. Here is an example setup to send email after failed run.
 
-#### Finish webhook URL (finishWebhookUrl)
+1. Open **Webhooks** tab of the actor/task that you want to monitor.
+2. Set **Event types** to `Run failed` and `Run timed out`.
+3. **URL** is the RUN API endpoint of this actor, just fill your API token - https://api.apify.com/v2/acts/apify~send-mail/runs?token=APIFY_API_TOKEN
+4. **Payload template** represents the body that is sent to this actor. An example below:
 
-https://api.apify.com/v2/acts/apify~send-mail/runs?token=APIFY_API_TOKEN
-You can find your API token on your Apify account page.
-
-#### Finish webhook data (finishWebhookData)
-
-```json
+```
 {
     "to": "test@apify.com",
-    "subject": "Test from crawler",
-    "text": "Text",
-    "html": "<p>Text</p>"
+    "subject": "Task Scrape-website run failed",
+    "text": "Run link - https://my.apify.com/tasks/{{eventData.actorTaskId}}#/runs/{{eventData.actorRunId}}"
 }
 ```
+
+This example expects that the webhook is sent from a task run. If you want to send it from an actor run, just update the "text" to
+```"text": "Run link - https://my.apify.com/actors/{{eventData.actorId}}#/runs/{{eventData.actorRunId}}"```
