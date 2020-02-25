@@ -1,0 +1,68 @@
+{
+    "title": "Send Email",
+    "description": "Automatically sends an email to a specific address. This actor is useful for notifications and reporting. With only 3 lines of javascript code, you'll be on top of your scraping actors and never miss importing results or issues.",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "to": {
+            "title": "To",
+            "type": "string",
+            "description": "(required) Email address of the recipient(s), you can comma-separate multiple addresses.",
+            "prefill": "info@apify.com, hello@apify.com",
+            "editor": "textfield"
+        },
+        "cc": {
+            "title": "CC",
+            "type": "string",
+            "description": "Email CC same format as to.",
+            "example": "copy@apify.com",
+            "editor": "textfield"
+        },
+        "bcc": {
+            "title": "BCC",
+            "type": "string",
+            "description": "Email BCC same format as to.",
+            "example": "unseencopy@apify.com",
+            "editor": "textfield"
+        },
+        "subject": {
+            "title": "Subject",
+            "type": "string",
+            "description": "(required) Text body of Email",
+            "prefill": "Send Email notification",
+            "editor": "textfield"
+        },
+        "text": {
+            "title": "Text",
+            "type": "string",
+            "description": "(required HTML or text) Text body of Email",
+            "example": "Hi there!",
+            "editor": "textfield"
+        },
+        "html": {
+            "title": "HTML",
+            "type": "string",
+            "description": "(required HTML or text) HTML body of Email",
+            "example": "<H1> Hi there! </H1>",
+            "editor": "textfield"
+        },
+        "replyTo": {
+            "title": "Reply to",
+            "type": "string",
+            "description": "Email address which will be set when recipient will try to reply to mail. (Uses header Reply-To [see doc](https://tools.ietf.org/html/rfc5322#section-3.6.2))",
+            "example": "replyto@apify.com",
+            "editor": "textfield"
+        },
+        "attachments": {
+            "title": "Attachments",
+            "type": "object",
+            "description": "array of attachments in base64 string",
+            "example": {
+                "filename": "attachment file name",
+                "data": "attachment content in base64 string"
+              },
+            "editor": "json"
+        }
+    },
+    "required": ["to", "subject"]
+}
