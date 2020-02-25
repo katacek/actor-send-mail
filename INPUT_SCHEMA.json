@@ -49,7 +49,7 @@
         "replyTo": {
             "title": "Reply to",
             "type": "string",
-            "description": "Email address which will be set when recipient will try to reply to mail. Uses header Reply-To [see doc](https://tools.ietf.org/html/rfc5322#section-3.6.2)",
+            "description": "Email address which will be set when recipient will try to reply to mail. Uses header Reply-To <a href= \"https://tools.ietf.org/html/rfc5322#section-3.6.2\">see doc </a>",
             "example": "replyto@apify.com",
             "editor": "textfield"
         },
