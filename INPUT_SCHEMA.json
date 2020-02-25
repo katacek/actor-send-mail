@@ -49,18 +49,18 @@
         "replyTo": {
             "title": "Reply to",
             "type": "string",
-            "description": "Email address which will be set when recipient will try to reply to mail. (Uses header Reply-To [see doc](https://tools.ietf.org/html/rfc5322#section-3.6.2))",
+            "description": "Email address which will be set when recipient will try to reply to mail. Uses header Reply-To [see doc](https://tools.ietf.org/html/rfc5322#section-3.6.2)",
             "example": "replyto@apify.com",
             "editor": "textfield"
         },
         "attachments": {
             "title": "Attachments",
-            "type": "object",
+            "type": "array",
             "description": "array of attachments in base64 string",
-            "example": {
+            "example": [{
                 "filename": "attachment file name",
                 "data": "attachment content in base64 string"
-              },
+              }],
             "editor": "json"
         }
     },
