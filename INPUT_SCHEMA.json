@@ -7,23 +7,23 @@
         "to": {
             "title": "To",
             "type": "string",
-            "description": "(required) Email address of the recipient(s), you can comma-separate multiple addresses.",
+            "description": "Email address of the recipient(s), you can comma-separate multiple addresses.",
             "prefill": "info@apify.com, hello@apify.com",
             "editor": "textfield"
         },
         "cc": {
-            "title": "CC",
+            "title": "Copy",
             "type": "string",
             "description": "Email CC same format as to.",
             "example": "copy@apify.com",
             "editor": "textfield"
         },
         "bcc": {
-            "title": "BCC",
+            "title": "Blind copy",
             "type": "string",
             "description": "Email BCC same format as to.",
             "example": "unseencopy@apify.com",
-            "editor": "textfield"
+            "editor": "textfield"   
         },
         "subject": {
             "title": "Subject",
@@ -53,15 +53,12 @@
             "example": "replyto@apify.com",
             "editor": "textfield"
         },
-        "attachments": {
-            "title": "Attachments",
-            "type": "array",
-            "description": "array of attachments in base64 string",
-            "example": [{
-                "filename": "attachment file name",
-                "data": "attachment content in base64 string"
-              }],
-            "editor": "json"
+        "isMock": {
+            "title": "Is mock",
+            "type": "boolean",
+            "description": "For test purposes",
+            "default": false,
+            "editor": "hidden"
         }
     },
     "required": ["to", "subject"]
