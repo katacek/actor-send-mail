@@ -54,11 +54,10 @@
             "editor": "textfield"
         },
         "isMock": {
-            "title": "Is mock",
+            "title": "Mock email",
             "type": "boolean",
-            "description": "For test purposes",
-            "default": false,
-            "editor": "hidden"
+            "description": "For test purposes - log process to console but not send the e-mail",
+            "default": false
         }
     },
     "required": ["to", "subject"]
